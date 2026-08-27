@@ -15,7 +15,10 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
+cd $WORKSPACE
 python3 -c "
+import sys
+sys.path.insert(0, '.')
 import calculator
 assert calculator.add(2,3)==5
 assert calculator.subtract(5,3)==2
