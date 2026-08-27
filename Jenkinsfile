@@ -14,8 +14,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh '''
-cd $WORKSPACE
+                dir("${WORKSPACE}") {
+                    sh '''
 python3 -c "
 import sys
 sys.path.insert(0, '.')
@@ -26,7 +26,8 @@ assert calculator.multiply(2,3)==6
 assert calculator.divide(6,3)==2
 print('All tests passed')
 "
-                '''
+                    '''
+                }
             }
         }
         stage('Deploy') {
