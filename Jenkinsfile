@@ -10,6 +10,7 @@ pipeline {
             steps {
                 sh 'echo "Build stage running"'
                 sh 'python3 --version'
+                sh 'ls -la $WORKSPACE'
             }
         }
         stage('Test') {
